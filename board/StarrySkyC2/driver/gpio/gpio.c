@@ -40,13 +40,13 @@ void gpio_hal_read_update(){
     rdr = REG_GPIO_0_DR;
     dr = dr | rdr; // 读取时，之前写的部分会左移到高16bit，现在读的部分在低16bit
     gpio_hal_write_update();
-    hal_delay_ms(0,5);
+    hal_delay_us(0,50);
 }
 
 void gpio_hal_write_update(){
     REG_GPIO_0_DDR = ddr;
     REG_GPIO_0_DR = dr;
-    hal_delay_ms(0,5);
+    hal_delay_us(0,50);
 }
 
 void gpio_hal_set_fcfg(uint8_t gpio_id, uint8_t gpio_num, uint8_t val){
