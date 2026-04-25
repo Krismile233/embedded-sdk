@@ -24,9 +24,23 @@ menu "Build Configuration"
 
         config COMPONENT_SPI_SOFTWARE
             bool "Spi Software Support"
-            default y
+            default n
             help
               Enable GPIO to simulate SPI behavior
+
+        config COMPONENT_SFUD
+            bool "Serial Flash Universal Driver Support"
+            depends on COMPONENT_SPI_SOFTWARE
+            default n
+            help
+              Enable SFUD to drive various flash devices.
+
+        config COMPONENT_FLASH_FS
+            bool "FileSystem Support"
+            depends on COMPONENT_SPI_SOFTWARE && COMPONENT_SFUD
+            default n
+            help
+              Enable FileSystem with FAT16 in flash by using fatfs
 
     endmenu
 
