@@ -33,6 +33,10 @@ void* memset(void* s, int c, size_t n);
  */
 size_t strlen(const char* s);
 
+size_t memcmp(const void* ptr1, const void* ptr2, size_t num);
+
+char* strchr(const char* str, int c);
+
 #ifdef __cplusplus
 }
 #endif
