@@ -16,7 +16,7 @@ warn() { echo -e "\033[1;33m[WARN]\033[0m $*"; }
 err() { echo -e "\033[1;31m[ERROR]\033[0m $*"; }
 
 board_name=""
-project_type=""
+project_type="Isolated Project"
 
 # Check if inside a project directory
 check_project_dir() {

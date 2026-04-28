@@ -53,6 +53,21 @@ SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/TimmoLog -name "log.c")
 CFLAGS += -I$(ECOS_SDK_HOME)/components/TimmoLog
 endif
 
+ifdef CONFIG_COMPONENT_SPI_SOFTWARE
+SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/spi_software/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/spi_software/include
+endif
+
+ifdef CONFIG_COMPONENT_SFUD
+SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/sfud/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/sfud/include
+endif
+
+ifdef CONFIG_COMPONENT_FLASH_FS
+SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/fatfs/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/fatfs/include
+endif
+
 ifdef CONFIG_LINK_LIBC
 SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/libc/src -name "*.c")
 CFLAGS += -I$(ECOS_SDK_HOME)/components/libc/include
