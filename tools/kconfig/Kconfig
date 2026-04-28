@@ -18,7 +18,7 @@ menu "Build Configuration"
 
         config COMPONENT_TIMMOLOG
             bool "TimmoLog Support"
-            default y
+            default n
             help
               Enable TimmoLog system
 
@@ -70,7 +70,7 @@ menu "Build Configuration"
         
     config BUILD_DEBUG
         bool "Enable debug information"
-        default n
+        default y
         help
           Add debug symbols to the firmware
           
