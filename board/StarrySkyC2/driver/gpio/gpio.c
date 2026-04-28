@@ -60,5 +60,5 @@ void gpio_hal_set_fcfg(uint8_t gpio_id, uint8_t gpio_num, uint8_t val){
 
 void gpio_hal_set_mux(uint8_t gpio_id, uint8_t gpio_num, uint8_t val){
     // StarrySkyC2 does not implement PINMUX
-    assert(0,"[Warn] StarrySkyC2 does not implement FCFG\n");
+    assert(0,"[Warn] StarrySkyC2 does not implement PINMUX\n");
 }
