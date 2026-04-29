@@ -40,7 +40,7 @@ void MYSPI_Stop(){
 uint8_t MYSPI_SwapByte(uint8_t wdata){
 	uint8_t rdata = 0x00;
 	for(int i=0;i<8;i++){
-		MYSPI_W_MOSI((wdata>>i)&0x01); // 使用左移可能会出现bug
+		MYSPI_W_MOSI((wdata>>(7-i))&0x01); // 使用左移可能会出现bug
         gpio_hal_write_update();
 
         MYSPI_W_CLK(1);

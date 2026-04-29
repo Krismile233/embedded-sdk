@@ -124,3 +124,11 @@ void gpio_hal_set_mux(uint8_t gpio_id, uint8_t gpio_num, uint8_t val){
             break;
     }
 }
+
+void gpio_hal_read_update(){
+
+}
+
+void gpio_hal_write_update(){
+    
+}

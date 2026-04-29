@@ -37,13 +37,13 @@ void gpio_hal_set_level(uint8_t gpio_id, uint8_t gpio_num, uint8_t level);
 uint8_t gpio_hal_get_level(uint8_t gpio_id, uint8_t gpio_num);
 
 /**
- * @brief GPIO端口写操作更新，需要在设置电平后调用
+ * @brief 仅适用于C2板卡，GPIO端口写操作更新，需要在设置电平后调用
  * 
  */
 void gpio_hal_read_update();
 
 /**
- * @brief  GPIO端口读操作更新，需要在获取电平前调用
+ * @brief  仅适用于C2板卡，GPIO端口读操作更新，需要在获取电平前调用
  * 
  */
 void gpio_hal_write_update();

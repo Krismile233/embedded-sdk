@@ -11,35 +11,41 @@ menu "Peripheral Drivers"
         help
             Enable GPIO driver for pin control
 
+    config DRIVER_GPIO_OVERCLOCK
+        bool "GPIO Overclock Support" 
+        default n
+        help
+            Overlock by disabled gpio delay_us(50) for safety
+
     config DRIVER_HP_UART
         bool "HP_UART Driver Support"
         default y
         help
-          Enable HP_UART driver for serial communication
+            Enable HP_UART driver for serial communication
             
     config DRIVER_QSPI
         bool "QSPI Driver Support"
         default y
         help
-          Enable QSPI driver for serial peripheral interface
+            Enable QSPI driver for serial peripheral interface
             
     config DRIVER_I2C
         bool "I2C Driver Support"
         default y
         help
-          Enable I2C driver for inter-integrated circuit
+            Enable I2C driver for inter-integrated circuit
             
     config DRIVER_PWM
         bool "PWM Driver Support"
         default y
         help
-          Enable PWM driver for pulse width modulation
+            Enable PWM driver for pulse width modulation
             
     config DRIVER_TIMER
         bool "Timer Driver Support"
         default y
         help
-          Enable timer driver for timing functions
+            Enable timer driver for timing functions
 endmenu
 
 menu "External Devices"

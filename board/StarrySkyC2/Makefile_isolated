@@ -75,7 +75,7 @@ LDS_PATH := $(shell find $(INCLUDE_DIRS) -type f -name "sections.lds")
 $(FIRMWARE_NAME):
 	@echo "Building $(FIRMWARE_NAME)..."
 	@mkdir -p $(BUILD_DIR)
-	@$(CROSS)cpp -P -o $(BUILD_DIR)/retrosoc_sections.lds $(LDS_PATH)
+	@$(CROSS)cpp -P $(LDFLAGS) -o $(BUILD_DIR)/retrosoc_sections.lds $(LDS_PATH)
 	@$(CROSS)gcc $(CFLAGS) -I./ -o $(BUILD_DIR)/$@ $(SRC_PATH)
 	@echo "Linking $(FIRMWARE_NAME)..."
 	@$(CROSS)objcopy -O verilog $(BUILD_DIR)/$@ $(BUILD_DIR)/$(FIRMWARE_NAME).hex

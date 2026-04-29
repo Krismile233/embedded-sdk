@@ -69,6 +69,21 @@ SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/spi_software/src -name "*.[
 CFLAGS += -I$(ECOS_SDK_HOME)/components/spi_software/include
 endif
 
+ifdef CONFIG_COMPONENT_SFUD
+SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/sfud/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/sfud/include
+endif
+
+ifdef CONFIG_COMPONENT_FLASH_FS
+SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/fatfs/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/fatfs/include
+endif
+
+ifdef CONFIG_COMPONENT_SHELL
+SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/letter-shell/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/letter-shell/include
+endif
+
 # 自动包含所有的 devices 组件的头文件（方便代码补全）
 CFLAGS += $(addprefix -I,$(shell find $(ECOS_SDK_HOME)/devices/*/include -type d 2>/dev/null))
 

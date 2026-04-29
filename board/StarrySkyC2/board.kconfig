@@ -11,12 +11,12 @@ menu "System Read-Only Information"
 
     choice
         bool "Memory Region Selection"
-        default LINK_RAM_REGION_PSRAM
+        default LINK_RAM_REGION_SRAM
 
-        config LINK_RAM_REGION_PSRAM
-            bool "PSRAM (Execute in Place)"
+        config LINK_RAM_REGION_SRAM
+            bool "SRAM (Execute in Place)"
             help
-                Code executes from PSRAM.
+                Code executes from SRAM.
     endchoice
 
     config BOARD_RAM_TYPE_NAME

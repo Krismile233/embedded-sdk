@@ -39,6 +39,9 @@ echo_available_templates() {
     echo "| st7789           |    | √  |    | √    |"
     echo "| timer            |    |    |    | √    |"
     echo "| wdg              |    |    |    | √    |"
+    echo "| wdg              |    |    |    | √    |"
+    echo "| filesystem_test  |    | √  |    |      |"
+    echo "| shell_test       |    | √  |    |      |"
     echo "|------------------|----|----|----|------|"
     echo "  * means supported but code is in root dir instead of board specific dir"
 }
@@ -135,9 +138,12 @@ init_project_isolated() {
 
     find "$SDK_ROOT/components/libc" -type f -regex '.*\.\(c\|h\|cpp\|hpp\)$' -exec cp {} "$LibraryDir" \;
     find "$SDK_ROOT/components/libgcc" -type f -regex '.*\.\(c\|h\|cpp\|hpp\)$' -exec cp {} "$LibraryDir" \;
-    find "$SDK_ROOT/components/spi_software" -type f -regex '.*\.\(c\|h\|cpp\|hpp\)$' -exec cp {} "$SystemDir" \;
-    # find "$SDK_ROOT/components/TimmoLog" -type f -regex '.*\.\(c\|h\|cpp\|hpp\)$' -exec cp {} "$SystemDir" \;
     find "$SDK_ROOT/hal" -type f -regex '.*\.\(c\|h\|cpp\|hpp\)$' -exec cp {} "$LibraryDir" \;
+    cp -r "$SDK_ROOT/components/spi_software" "$SystemDir"
+    cp -r "$SDK_ROOT/components/sfud" "$SystemDir"
+    cp -r "$SDK_ROOT/components/fatfs" "$SystemDir"
+    cp -r "$SDK_ROOT/components/letter-shell" "$SystemDir"
+    # cp -r "$SDK_ROOT/components/TimmoLog" "$SystemDir"
 
     # due to diversity of the device drivers, copy its whole structure
     find "$SDK_ROOT/devices" -maxdepth 1 -mindepth 1 -type d -exec cp -r {} "$HardwareDir" \;

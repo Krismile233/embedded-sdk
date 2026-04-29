@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include "hal_sys_uart.h"
+#include "hal_hp_uart.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -24,6 +25,10 @@ int printf(const char *fmt, ...);
  * @return Number of characters written
  */
 int vprintf(const char *fmt, va_list args);
+
+int vsnprintf(char *str, size_t size, const char *fmt, va_list args);
+
+int snprintf(char *buffer, size_t size, const char *format, ...);
 
 #ifdef __cplusplus
 }
