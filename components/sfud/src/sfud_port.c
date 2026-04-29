@@ -37,17 +37,16 @@ void sfud_log_debug(const char *file, const long line, const char *format, ...);
 
 /**
  * SPI write data then read data
+ * 非常耗时
  */
 static sfud_err spi_write_read(const sfud_spi *spi, const uint8_t *write_buf, size_t write_size, uint8_t *read_buf,
         size_t read_size) {
     sfud_err result = SFUD_SUCCESS;
     uint8_t send_data=0x00, read_data=0x00;
 
-    /**
-     * add your spi write and read code
-     */
     MYSPI_Start();
     for(uint32_t i = 0; i < read_size+write_size; i++){
+        // printf("Waiting(Write:%d,Read:%d,Sum:%d,cur:%d)\r\n",write_size,read_size,read_size+write_size,i);
         if (i < write_size) {
             send_data = *write_buf++;
         } else {
@@ -62,6 +61,7 @@ static sfud_err spi_write_read(const sfud_spi *spi, const uint8_t *write_buf, si
 
     return result;
 }
+
 
 #ifdef SFUD_USING_QSPI
 /**
@@ -130,7 +130,7 @@ void sfud_log_debug(const char *file, const long line, const char *format, ...) 
     printf("[SFUD](%s:%ld) ", file, line);
     /* must use vprintf to print */
     vprintf(format, args);
-    printf("\n");
+    printf("\r\n");
     va_end(args);
 }
 
@@ -148,6 +148,6 @@ void sfud_log_info(const char *format, ...) {
     printf("[SFUD]");
     /* must use vprintf to print */
     vprintf(format, args);
-    printf("\n");
+    printf("\r\n");
     va_end(args);
 }

@@ -423,7 +423,7 @@ sfud_err sfud_read(const sfud_flash *flash, uint32_t addr, size_t size, uint8_t 
             cmd_data[0] = SFUD_CMD_READ_DATA;
             make_adress_byte_array(flash, addr, &cmd_data[1]);
             cmd_size = flash->addr_in_4_byte ? 5 : 4;
-            result = spi->wr(spi, cmd_data, cmd_size, data, size);
+            result = spi->wr(spi, cmd_data, cmd_size, data, size); 
         }
     }
     /* unlock SPI */
@@ -972,6 +972,7 @@ static sfud_err wait_busy(const sfud_flash *flash) {
 
     while (true) {
         result = sfud_read_status(flash, &status);
+        // SFUD_INFO("Waiting.");
         if (result == SFUD_SUCCESS && ((status & SFUD_STATUS_REGISTER_BUSY)) == 0) {
             break;
         }

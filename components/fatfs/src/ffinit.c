@@ -1,4 +1,4 @@
-#include "init.h"
+#include "ffinit.h"
 
 FATFS fs_Flash;   //FatFs文件系统对象
 FRESULT res_Flash;//文件操作结果
@@ -18,27 +18,27 @@ bool load_filesystem(){
 
     for(uint8_t i = 0; i<=3; i++){
         if(i==3){
-            printf("Exceed the maximum number of retries, exit :(");
+            printf("Exceed the maximum number of retries, exit :(\r\n");
         }
 
-        printf("Mounting FileSystem...\n");
+        printf("Mounting FileSystem...\r\n");
         res_Flash = f_mount(&fs_Flash,"0:",1);
         if(res_Flash == FR_NO_FILESYSTEM){
             printf("Do not find a FileSystem...\n");
             printf("Make a new FileSystem...\n");
             res_Flash = f_mkfs("0:", &opt, work_buf, sizeof(work_buf));
             if(res_Flash == FR_MKFS_ABORTED){
-                printf("Fail in making a new FileSystem, abort.\n");
+                printf("Fail in making a new FileSystem, abort.\r\n");
                 isMount = false;
                 break;
             }else{
-                printf("Make a new FileSystem success, go ahead.\n");
+                printf("Make a new FileSystem success, go ahead.\r\n");
                 continue;
             }
         }else{
             isMount = true;
-            printf("Mount FileSystem success!\n");
-            break;
+            printf("Mount FileSystem success!\r\n");
+            return isMount;
         }
     }
     

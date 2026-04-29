@@ -22,7 +22,7 @@
 #include <string.h>
 #include "ff.h"			/* Basic definitions and declarations of API */
 #include "diskio.h"		/* Declarations of MAI */
-#include "assert.h"
+#include "stdio.h"
 
 /*--------------------------------------------------------------------------
 
@@ -531,7 +531,7 @@ static WCHAR LfnBuf[FF_MAX_LFN + 1];		/* LFN working buffer */
     do {                                                                                        \
         FRESULT _res = (res);                                                                   \
         if (_res == FR_MKFS_ABORTED) {                                                          \
-            assert(0,"FR_MKFS_ABORTED is triggered\n");                                           \
+            printf("FR_MKFS_ABORTED at %s:%d\n", __FILE__, __LINE__);                           \
         }                                                                                       \
         return _res;                                                                            \
     } while(0)

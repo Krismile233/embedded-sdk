@@ -26,17 +26,17 @@ DSTATUS disk_status (
 )
 {
 	DSTATUS status = STA_NOINIT;
-
+    printf("LogEnterStatus=%x\r\n",status);
 	switch (pdrv) {
         case DEV_FLASH:
             uint8_t flash_status_register = 0x00;
             sfud_read_status(flash,&flash_status_register);
-            if((flash_status_register & 0x01) == 0x00) status = 0x00; // Write Enable & Not Busy
+            if((flash_status_register & 0x01) == 0x00) status = 0x00; // Not Busy
 		    else status = STA_NOINIT;
             
             break;
 	}
-    printf("LogInStatus=%x\n",status);
+    printf("LogExitStatus=%x\r\n",status);
 	return status;
 }
 
@@ -51,6 +51,7 @@ DSTATUS disk_initialize (
 )
 {
 	DSTATUS status = STA_NOINIT;
+    printf("LogEnterInit=%x\r\n",status);
 
 	switch (pdrv) {
         case DEV_FLASH:
@@ -59,7 +60,7 @@ DSTATUS disk_initialize (
             else status = STA_NOINIT;
 		    break;
 	}
-    printf("LogInInit=%x\n",status);
+    printf("LogExitInit=%x\r\n",status);
 	return status;
 }
 
@@ -77,7 +78,7 @@ DRESULT disk_read (
 )
 {
 	DRESULT status = RES_PARERR;
-
+    printf("LogEnterRead=%x\r\n",status);
     // sector += 512; // 2MB之后的第一块作为第一个扇区
     uint32_t addr = sector << 12;
     size_t size = count << 12;
@@ -89,7 +90,7 @@ DRESULT disk_read (
             else status = RES_ERROR;
 		    break;
 	}
-    printf("LogInRead=%x\n",status);
+    printf("LogExitRead=%x\r\n",status);
 	return status;
 }
 
@@ -109,6 +110,7 @@ DRESULT disk_write (
 )
 {
 	DRESULT status = RES_PARERR;
+    printf("LogEnterWrite=%x\r\n",status);
 
     uint32_t addr = sector << 12;
     size_t size = count << 12;
@@ -119,7 +121,7 @@ DRESULT disk_write (
             else status = RES_ERROR;
 		    break;
 	}
-    printf("LogInWrite=%x\n",status);
+    printf("LogExitWrite=%x\r\n",status);
 	return status;
 }
 
