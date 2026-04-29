@@ -37,6 +37,16 @@ size_t memcmp(const void* ptr1, const void* ptr2, size_t num);
 
 char* strchr(const char* str, int c);
 
+int strcmp ( const char* src, const char* dst );
+
+char * strcpy(char *dst,const char *src);
+
+char *strncpy(char *dst, const char *src, size_t len);
+
+int strncmp(const char *s1, const char *s2, size_t n);
+
+void * memmove(void *dest, const void *src, size_t num);
+
 #ifdef __cplusplus
 }
 #endif

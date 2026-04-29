@@ -68,6 +68,11 @@ SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/fatfs/src -name "*.[cS]
 CFLAGS += -I$(ECOS_SDK_HOME)/components/fatfs/include
 endif
 
+ifdef CONFIG_COMPONENT_SHELL
+SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/letter-shell/src -name "*.[cS]")
+CFLAGS += -I$(ECOS_SDK_HOME)/components/letter-shell/include
+endif
+
 ifdef CONFIG_LINK_LIBC
 SDK_SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/libc/src -name "*.c")
 CFLAGS += -I$(ECOS_SDK_HOME)/components/libc/include

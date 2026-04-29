@@ -44,13 +44,17 @@ uint8_t gpio_hal_get_level(uint8_t gpio_id, uint8_t gpio_num){
 
 void gpio_hal_read_update(){
     rdr = REG_GPIO_0_DR;
+#ifndef CONFIG_GPIO_OVERCLOCK
     hal_delay_us(0,50);
+#endif
 }
 
 void gpio_hal_write_update(){
     REG_GPIO_0_DDR = ddr;
     REG_GPIO_0_DR = wdr;
+#ifndef CONFIG_GPIO_OVERCLOCK
     hal_delay_us(0,50);
+#endif
 }
 
 void gpio_hal_set_fcfg(uint8_t gpio_id, uint8_t gpio_num, uint8_t val){
