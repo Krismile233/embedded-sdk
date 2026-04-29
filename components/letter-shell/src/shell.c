@@ -376,7 +376,7 @@ static void shellWritePrompt(Shell *shell, unsigned char newline)
         }
         shellWriteString(shell, shell->info.user->data.user.name);
         shellWriteString(shell, ":");
-#ifdef USE_FATFS
+#ifdef CONFIG_COMPONENT_FLASH_FS
         shellWriteString(shell, shell->info.path ? shell->info.path : "/");
 #else
         shellWriteString(shell, "/");

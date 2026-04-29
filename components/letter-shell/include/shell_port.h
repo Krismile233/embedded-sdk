@@ -16,9 +16,6 @@ extern uint32_t envFunc;
 
 void create_shell_env_varible();
 
-// #define USE_FATFS
-
-
 short shellRead(char* str, unsigned short len);
 
 short shellWrite(char* str, unsigned short len);

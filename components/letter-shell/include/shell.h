@@ -541,7 +541,7 @@ int shellRun(Shell *shell, const char *cmd);
 
 
 
-#if SHELL_USING_COMPANION == 1 && !defined(USE_FATFS)
+#if SHELL_USING_COMPANION == 1 && !defined(CONFIG_COMPONENT_FLASH_FS)
 /**
  * @brief shell伴生对象定义
  */
@@ -558,7 +558,7 @@ signed char shellCompanionDel(Shell *shell, int id);
 void *shellCompanionGet(Shell *shell, int id);
 #endif
 
-#if SHELL_USING_COMPANION == 0 && defined(USE_FATFS)
+#if SHELL_USING_COMPANION == 0 && defined(CONFIG_COMPONENT_FLASH_FS)
 signed char shellCompanionAdd(Shell *shell, int id, void *object);
 signed char shellCompanionDel(Shell *shell, int id);
 void *shellCompanionGet(Shell *shell, int id);

@@ -14,7 +14,7 @@
 #include "stddef.h"
 #include "shell.h"
 
-#ifdef USE_FATFS
+#ifdef CONFIG_COMPONENT_FLASH_FS
 
 #define     SHELL_FS_VERSION                "1.0.0"
 

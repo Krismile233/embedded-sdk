@@ -6,7 +6,7 @@ void load_shell(){
     char shellBuffer[1024];
     char shellPathBuffer[1024] = "/";
 
-#ifdef USE_FATFS
+#ifdef CONFIG_COMPONENT_FLASH_FS
     ShellFs shellfs;
     Shell shell;
 

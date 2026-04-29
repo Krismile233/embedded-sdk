@@ -114,7 +114,7 @@ const ShellCommand shellCommandList[] =
                    SHELL_AGENCY_FUNC_NAME(shellRun), 
                    run command directly),
 
-#ifdef USE_FATFS
+#ifdef CONFIG_COMPONENT_FLASH_FS
     SHELL_CMD_ITEM(SHELL_CMD_PERMISSION(0)|SHELL_CMD_TYPE(SHELL_TYPE_CMD_FUNC)|SHELL_CMD_DISABLE_RETURN,
                     ls, 
                     shellLS, 

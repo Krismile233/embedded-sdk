@@ -12,7 +12,7 @@
 #include "shell.h"
 #include "stdio.h"
 
-#ifdef USE_FATFS
+#ifdef CONFIG_COMPONENT_FLASH_FS
 /**
  * @brief 改变当前路径(shell调用)
  * 
