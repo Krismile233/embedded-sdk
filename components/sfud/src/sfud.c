@@ -158,7 +158,7 @@ size_t sfud_get_device_num(void) {
  *
  * @return flash device table pointer
  */
-const sfud_flash *sfud_get_device_table(void) {
+sfud_flash *sfud_get_device_table(void) {
     return flash_table;
 }
 
@@ -248,20 +248,18 @@ static sfud_err hardware_init(sfud_flash *flash) {
 
     sfud_err result = SFUD_SUCCESS;
     size_t i;
-
     SFUD_ASSERT(flash);
-
     result = sfud_spi_port_init(flash);
     if (result != SFUD_SUCCESS) {
         return result;
     }
-
 #ifdef SFUD_USING_QSPI
     /* set default read instruction */
     flash->read_cmd_format.instruction = SFUD_CMD_READ_DATA;
 #endif /* SFUD_USING_QSPI */
 
     /* SPI write read function must be initialize */
+    
     SFUD_ASSERT(flash->spi.wr);
     /* if the user don't configure flash chip information then using SFDP parameter or static flash parameter table */
     if (flash->chip.capacity == 0 || flash->chip.write_mode == 0 || flash->chip.erase_gran == 0

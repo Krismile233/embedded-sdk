@@ -6,8 +6,11 @@
 #include "hal_sys_uart.h"
 #include "hal_hp_uart.h"
 #include "shell_port.h"
-#include "ffinit.h"
+#include "generated/autoconf.h"
 
+#ifdef CONFIG_COMPONENT_FLASH_FS
+#include "ffinit.h"
+#endif
 
 void load_shell();
 

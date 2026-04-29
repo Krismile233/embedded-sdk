@@ -17,6 +17,9 @@
 #include "stdint.h"
 #include "libgcc.h"
 #include <stddef.h>
+#include "generated/autoconf.h"
+
+
 
 #define     SHELL_VERSION               "3.2.4"                 /**< 版本号 */
 

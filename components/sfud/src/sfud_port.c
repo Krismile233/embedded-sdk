@@ -110,7 +110,6 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
     /* adout 60 seconds timeout */
     flash->retry.times = 60 * 10000;
 
-
     return result;
 }
 

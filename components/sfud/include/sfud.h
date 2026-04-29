@@ -73,7 +73,7 @@ size_t sfud_get_device_num(void);
  *
  * @return flash device table pointer
  */
-const sfud_flash *sfud_get_device_table(void);
+sfud_flash *sfud_get_device_table(void);
 
 #ifdef SFUD_USING_QSPI
 /**

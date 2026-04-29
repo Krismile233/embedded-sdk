@@ -21,6 +21,7 @@ void create_shell_env_varible(){
 }
 
 
+
 short shellRead(char* str, unsigned short len){
     for(int i=0;i<len;i++) hal_hp_uart_recv(str+i);
     return len;
@@ -30,6 +31,8 @@ short shellWrite(char* str, unsigned short len){
     for(int i=0;i<len;i++) hal_hp_uart_send(str[i]);
     return len;
 }
+
+#ifdef CONFIG_COMPONENT_FLASH_FS
 
 size_t getcwd(char* dir, size_t dirLen){
     char fullpath[256];
@@ -144,3 +147,5 @@ size_t createfile(char *dir, char *filename){
     
     return written;
 }
+
+#endif

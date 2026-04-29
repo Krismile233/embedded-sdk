@@ -14,7 +14,7 @@
  #include "shell_port.h"
 
   
-#if SHELL_USING_COMPANION == 1 && !defined(USE_FATFS)
+#if SHELL_USING_COMPANION == 1 && !defined(CONFIG_COMPONENT_FLASH_FS)
 /**
  * @brief shell添加伴生对象
  * 
@@ -91,7 +91,7 @@ void *shellCompanionGet(Shell *shell, int id)
 #endif /** SHELL_USING_COMPANION == 1 */
 
 
-#if SHELL_USING_COMPANION == 0 && defined(USE_FATFS)
+#if SHELL_USING_COMPANION == 0 && defined(CONFIG_COMPONENT_FLASH_FS)
 
 ShellFs shellfs;
 /**
