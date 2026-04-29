@@ -77,6 +77,7 @@ endif
 ifdef CONFIG_COMPONENT_FLASH_FS
 SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/fatfs/src -name "*.[cS]")
 CFLAGS += -I$(ECOS_SDK_HOME)/components/fatfs/include
+endif
 
 ifdef CONFIG_COMPONENT_SHELL
 SRC_PATH += $(shell find $(ECOS_SDK_HOME)/components/letter-shell/src -name "*.[cS]")
