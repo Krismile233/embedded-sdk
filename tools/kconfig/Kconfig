@@ -33,7 +33,7 @@ menu "Build Configuration"
             depends on COMPONENT_SPI_SOFTWARE
             default n
             help
-              Enable SFUD to drive various flash devices.
+              Enable SFUD to drive various flash devices
 
         config COMPONENT_FLASH_FS
             bool "FileSystem Support"
@@ -42,6 +42,11 @@ menu "Build Configuration"
             help
               Enable FileSystem with FAT16 in flash by using fatfs
 
+        config COMPONENT_SHELL
+            bool "Shell Support"
+            default n
+            help
+              Enable Shell(run slowly when using software-spi)
     endmenu
 
     choice
