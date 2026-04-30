@@ -108,11 +108,16 @@ static const uint8_t colon_font[24] = {
  * @brief 更新时间计算
  * 使用定时器进行精确计时
  */
+
+ void delay_ms(uint32_t ms) {
+    hal_delay_ms(0, ms);
+}
+
 void clock_update_time(void)
 {
-    sys_tick_init();
+    hal_sys_tick_init(0);
     while(1){
-        if(get_sys_tick() >= CONFIG_CPU_FREQ_MHZ * 1000 * 1000 - PROGRAM_TIME){
+        if(hal_sys_tick_get(0) >= CONFIG_CPU_FREQ_MHZ * 1000 * 1000 - PROGRAM_TIME){
             break;
         }
     }
@@ -332,13 +337,13 @@ void clock_run(st7735_device_t* dev)
  */
 void main(void)
 {
-    sys_uart_init();
+    hal_sys_uart_init();
     printf("[CLOCK] Starting clock test...\n");
 
-    qspi_config_t qspi_config = {
+    hal_qspi_config_t qspi_config = {
         .clkdiv = 0,
     };
-    qspi_init(&qspi_config);
+    hal_qspi_init(HAL_QSPI_PORT_0, &qspi_config);
 
     st7735_device_t st7735 = {
         .dc_pin = GPIO_NUM_2,

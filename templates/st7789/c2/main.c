@@ -1,13 +1,18 @@
 #include "main.h"
 
+void delay_ms(uint32_t ms) {
+    hal_delay_ms(0, ms);
+}
+
 void main(void){   
-    sys_uart_init();
+    
+    hal_sys_uart_init();
     printf("ST7789 LCD TEST!\n");
 
-    qspi_config_t qspi_config = {
+    hal_qspi_config_t qspi_config = {
         .clkdiv = 1,
     };
-    qspi_init(&qspi_config);
+    hal_qspi_init(HAL_QSPI_PORT_0, &qspi_config);
 
     st7789_device_t st7789 = {
         .dc_pin = GPIO_NUM_0,
@@ -18,8 +23,13 @@ void main(void){
         .horizontal_offset = 0,
         .vertical_offset = 0,
     };
+
     st7789_init(&st7789);
     st7789_fill(&st7789, 0, 0, 240, 240, 0xFFFFFFFF);
     st7789_fill(&st7789, 0, 0, 240, 240, 0x00000000);
     st7789_fill(&st7789, 0, 0, 240, 240, 0xAAAAAAAA);
+
+    while(1) {
+        delay_ms(1000);
+    }
 }
